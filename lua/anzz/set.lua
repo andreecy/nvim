@@ -9,4 +9,4 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 
 vim.o.scrolloff = 8
-
+vim.o.hlsearch = false
