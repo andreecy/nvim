@@ -4,52 +4,58 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-	-- fuzzy finder
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.2',
-		-- or                            , branch = '0.1.x',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
-	-- file jumper
-	use('theprimeagen/harpoon')
+    -- fuzzy finder
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        -- or                            , branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
+    -- file jumper
+    use('theprimeagen/harpoon')
 
-	-- lsp
-	use {
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
-		requires = {
-			-- LSP Support
-			{'neovim/nvim-lspconfig'},             -- Required
-			{
-				-- Optional
-				'williamboman/mason.nvim',
-				run = function()
-					pcall(vim.cmd, 'MasonUpdate')
-				end,
-			},
-			{'williamboman/mason-lspconfig.nvim'}, -- Optional
-			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},     -- Required
-			{'hrsh7th/cmp-nvim-lsp'}, -- Required
-			{'L3MON4D3/LuaSnip'},     -- Required
-		}
-	}
+    -- LSP
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' }, -- Required
+            {
+                -- Optional
+                'williamboman/mason.nvim',
+                run = function()
+                    pcall(vim.cmd, 'MasonUpdate')
+                end,
+            },
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },                  -- Required
+            { 'hrsh7th/cmp-nvim-lsp' },              -- Required
+            { 'L3MON4D3/LuaSnip' },                  -- Required
+        }
+    }
 
-	-- status line
-	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-	}
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-emoji'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'rafamadriz/friendly-snippets'
+    use 'onsails/lspkind-nvim' -- completion items icon
 
-	--  highlight
-	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
+    -- status line
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 
-	-- color scheme
-	use { "catppuccin/nvim", as = "catppuccin" }
+    --  highlight
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
+    -- color scheme
+    use { "catppuccin/nvim", as = "catppuccin" }
     use 'navarasu/onedark.nvim'
 
     -- Add indentation guides even on blank lines
@@ -61,27 +67,26 @@ return require('packer').startup(function(use)
         },
     }
 
-	-- "gc" to comment visual regions/lines
-	use  {
-		'numToStr/Comment.nvim',
-		config = function()
-			require('Comment').setup()
-		end
-	}
+    -- "gc" to comment visual regions/lines
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
 
     -- neotree
-	use {
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-		}
-	}
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        }
+    }
 
     -- git integration
     use 'tpope/vim-fugitive'
     use 'airblade/vim-gitgutter'
-
 end)
