@@ -94,4 +94,6 @@ return require('packer').startup(function(use)
   -- git integration
   use 'tpope/vim-fugitive'
   use 'lewis6991/gitsigns.nvim'
+
+  use 'ollykel/v-vim'
 end)
