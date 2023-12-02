@@ -184,9 +184,17 @@ return {
   -- codeium
   {
     "Exafunction/codeium.nvim",
+    event = "BufEnter",
     cmd = "Codeium",
     build = ":Codeium Auth",
     opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      require("codeium").setup({})
+    end,
   },
 
   -- disable default <tab> and <s-tab> behavior in LuaSnip
