@@ -11,8 +11,15 @@ return {
       table.insert(opts.sources, { name = "emoji" })
 
       -- codeium
+      -- table.insert(opts.sources, 1, {
+      --   name = "codeium",
+      --   group_index = 1,
+      --   priority = 100,
+      -- })
+
+      -- supermaven
       table.insert(opts.sources, 1, {
-        name = "codeium",
+        name = "supermaven",
         group_index = 1,
         priority = 100,
       })
@@ -63,18 +70,24 @@ return {
   },
 
   -- codeium
+  -- {
+  --   "Exafunction/codeium.nvim",
+  --   event = "BufEnter",
+  --   cmd = "Codeium",
+  --   build = ":Codeium Auth",
+  --   opts = {},
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "hrsh7th/nvim-cmp",
+  --   },
+  --   config = function()
+  --     require("codeium").setup({})
+  --   end,
+  -- },
   {
-    "Exafunction/codeium.nvim",
-    event = "BufEnter",
-    cmd = "Codeium",
-    build = ":Codeium Auth",
-    opts = {},
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
+    "supermaven-inc/supermaven-nvim",
     config = function()
-      require("codeium").setup({})
+      require("supermaven-nvim").setup({})
     end,
   },
 }
