@@ -30,6 +30,7 @@ return {
     end,
   },
 
+  -- rest api
   {
     "rest-nvim/rest.nvim",
     dependencies = {
